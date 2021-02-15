@@ -1,0 +1,7 @@
+<form [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()">
+  <label>Enter something:</label>
+  <div>
+    <input  [formControl]="definition">
+  </div>
+  <button>Search in Wiki</button>
+</form>
