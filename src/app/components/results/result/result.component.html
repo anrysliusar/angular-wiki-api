@@ -1,0 +1,5 @@
+<h3>{{result.title}}</h3>
+<div>{{result.wordcount}}</div>
+<p [innerHtml]="result.snippet"></p>
+<a target="_blank" [href]="'http://en.wikipedia.org/?curid=' + result.pageid">Show info</a>
+<hr>
