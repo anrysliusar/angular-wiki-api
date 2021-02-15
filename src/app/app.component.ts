@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {WikiService} from './services/wiki.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-wiki-api';
+  results = [];
+
+  constructor(private wikiService: WikiService) {
+  }
+
+  getDefinition(definition: string): void {
+    this.wikiService
+      .search(definition)
+      .subscribe(value => {
+        this.results = value.query.search;
+        console.log(this.results);
+      });
+  }
 }
