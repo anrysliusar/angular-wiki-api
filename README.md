@@ -1,27 +1,25 @@
 # AngularWikiApi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+Цей проект створено за допомогою [Angular CLI](https://github.com/angular/angular-cli) версії 11.1.0.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Запустіть сервер командою `ng serve`. Перейдіть до `http://localhost:4200/`. Програма автоматично перезавантажиться, якщо ви зміните будь-який з вихідних файлів.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Запустіть `ng generate component-name-name`, щоб створити нову компоненту. Ви також можете використовувати `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Запустіть `ng build` для побудови проекту. Артефакти збірки будуть зберігатися в каталозі `dist /`. Використовуйте прапор `--prod` для виробничої збірки.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Запустіть `ng test`, щоб виконати модульні тести через [Karma] (https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Запустіть `ng e2e`, щоб виконати наскрізні тести через [Protractor] (http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
