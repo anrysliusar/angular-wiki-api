@@ -1,25 +1,11 @@
 # AngularWikiApi
 
-Цей проект створено за допомогою [Angular CLI](https://github.com/angular/angular-cli) версії 11.1.0.
+# Налаштування проекту
+Для початку потрібно:
+1.  Встановити середовище виконання JavaScript [Node.js](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi2woTG0u7uAhVvpIsKHZPLAqYQFjAAegQIARAD&url=https%3A%2F%2Fnodejs.org%2Fuk%2F&usg=AOvVaw3UL72OjnHBJ6VfVjj16EbA)
 
-## Development server
+2. Клонувати проект за допомогою команди `git clone`
 
-Запустіть сервер командою `ng serve`. Перейдіть до `http://localhost:4200/`. Програма автоматично перезавантажиться, якщо ви зміните будь-який з вихідних файлів.
-
-## Code scaffolding
-
-Запустіть `ng generate component-name-name`, щоб створити нову компоненту. Ви також можете використовувати `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Запустіть `ng build` для побудови проекту. Артефакти збірки будуть зберігатися в каталозі `dist /`. Використовуйте прапор `--prod` для виробничої збірки.
-
-## Running unit tests
-
-Запустіть `ng test`, щоб виконати модульні тести через [Karma] (https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Запустіть `ng e2e`, щоб виконати наскрізні тести через [Protractor] (http://www.protractortest.org/).
+3. Встановити всі потрібні залежності командою `npm install`
 
 
