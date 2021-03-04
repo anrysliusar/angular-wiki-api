@@ -1,0 +1,17 @@
+.nav-item{
+  font-size: 150%;
+}
+
+.navbar-brand{
+  margin: 10px;
+}
+
+.collapse{
+  align-items: center;
+}
+
+.padd{
+  padding-left: 5%;
+  padding-right: 2%;
+
+}

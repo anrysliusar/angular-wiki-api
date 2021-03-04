@@ -7,7 +7,7 @@ import {WikiService} from './services/wiki.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-wiki-api';
+  title = 'Wiki';
   results = [];
 
   constructor(private wikiService: WikiService) {
