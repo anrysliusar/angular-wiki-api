@@ -1,7 +1,9 @@
 <div *ngIf="results">
-  <h2>{{title}}</h2>
-  <div *ngFor="let result of results">
-    <app-result *ngIf="results" [result]="result"></app-result>
+  <h2 style="text-align: center">{{title}}</h2>
+  <div class="listItems">
+    <div *ngFor="let result of results">
+      <app-result  *ngIf="results" [result]="result"></app-result>
+    </div>
   </div>
 </div>
 
