@@ -19,10 +19,10 @@ export class WikiService {
         action: 'query',
         list: 'search',
         srsearch: definition,
-        utf8: '1',
         format: 'json',
         origin: '*'
       }
     });
   }
 }
+
