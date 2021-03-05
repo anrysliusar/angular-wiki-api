@@ -1,18 +1,26 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {SearchBarComponent} from './components/searcher/search-bar/search-bar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AllResultsComponent } from './components/results/all-results/all-results.component';
-import { ResultComponent } from './components/results/result/result.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSliderModule} from '@angular/material/slider';
+import {AllResultsComponent} from './components/searcher/results/all-results/all-results.component';
+import {ResultComponent} from './components/searcher/results/result/result.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {RouterModule} from '@angular/router';
+import {AboutComponent} from './components/about/about.component';
+import {SearcherComponent} from './components/searcher/searcher/searcher.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
+const routes = [
+  {
+    path: 'search', component: SearcherComponent
+  },
+  {
+    path: 'about', component: AboutComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -20,21 +28,21 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SearchBarComponent,
     AllResultsComponent,
     ResultComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent,
+    SearcherComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
+    RouterModule.forRoot(routes),
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatSelectModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
