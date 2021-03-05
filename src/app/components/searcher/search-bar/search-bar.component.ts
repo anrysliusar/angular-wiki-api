@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -9,10 +10,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class SearchBarComponent implements OnInit {
   private options = [];
   suitableOptions = [];
-  definition = new FormControl();
+  term = new FormControl();
 
   contactForm = new FormGroup({
-    name: this.definition
+    name: this.term
   });
 
   @Output()

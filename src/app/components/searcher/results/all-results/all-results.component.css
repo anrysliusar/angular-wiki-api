@@ -3,3 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.bg-azure_p-5{
+  background-color: azure;
+  padding: 5%;
+}

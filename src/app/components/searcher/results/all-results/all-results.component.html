@@ -1,5 +1,5 @@
-<div style="padding: 5%; background-color: azure " *ngIf="results">
-  <h1 style="text-align: center">{{title}}</h1>
+<div class="bg-azure_p-5" *ngIf="results">
+  <h1 class="text-center">{{title}}</h1>
   <div class="listItems">
     <div *ngFor="let result of results">
       <app-result  *ngIf="results" [result]="result"></app-result>

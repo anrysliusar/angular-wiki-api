@@ -1,7 +1,9 @@
-.paddl5{
+.navbar{
+  background-color: darkgrey;
+}
+.pad{
   padding-left: 5%;
 }
-
 
 .example-form {
   min-width: 150px;
