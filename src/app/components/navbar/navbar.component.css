@@ -10,7 +10,15 @@
   align-items: center;
 }
 
-.padd{
+.pad{
   padding-left: 5%;
   padding-right: 2%;
+}
+
+.header_fixed {
+  width: 100%;
+  z-index: 100;
+  position: sticky;
+  left: 0;
+  top: 0;
 }
