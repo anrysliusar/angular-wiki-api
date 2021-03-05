@@ -1,0 +1,6 @@
+<app-search-bar (definitionEmitter)="getWikiDefinition($event)"></app-search-bar>
+<div>
+  <div class="modal-dialog-scrollable" *ngIf="results.length != 0">
+    <app-all-results [results]="results"></app-all-results>
+  </div>
+</div>
