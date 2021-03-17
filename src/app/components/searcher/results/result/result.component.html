@@ -1,7 +1,7 @@
 <div class="card" style="width: 26rem;">
   <div class="card-body">
-    <h5 class="card-title">{{result.title}}</h5>
-    <p class="card-text" [innerHtml]="result.snippet"></p>
-    <a class="btn btn-dark" target="_blank" [href]="'http://en.wikipedia.org/?curid=' + result.pageid">Show info</a>
+    <h5 class="card-title">{{result?.title}}</h5>
+    <p class="card-text" [innerHtml]="result?.snippet"></p>
+    <a class="btn btn-dark" target="_blank" [href]="'http://en.wikipedia.org/?curid=' + result?.pageid">Show info</a>
   </div>
 </div>

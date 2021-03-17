@@ -7,6 +7,7 @@ import {Result} from '../../../../models/result';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
+  title = 'Result';
   @Input()
   result: Result;
 
