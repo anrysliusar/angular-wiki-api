@@ -10,14 +10,14 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class SearchBarComponent implements OnInit {
   private options = [];
   suitableOptions = [];
-  term = new FormControl();
+  definition = new FormControl();
 
   contactForm = new FormGroup({
-    name: this.term
+    name: this.definition
   });
 
   @Output()
-  termEmitter = new EventEmitter();
+  definitionEmitter = new EventEmitter();
 
   constructor() {
   }
@@ -33,7 +33,7 @@ export class SearchBarComponent implements OnInit {
 
     this.options = this.getDataFromLocalStorage();
     const formTerm = this.contactForm.value.name;
-    this.termEmitter.emit(formTerm);
+    this.definitionEmitter.emit(formTerm);
 
     if (!localStorage.length) {
       localStorage.setItem(`term${localStorage.length}`, formTerm);

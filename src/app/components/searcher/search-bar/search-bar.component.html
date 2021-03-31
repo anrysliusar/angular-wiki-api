@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light pad">
   <form class="form-check-inline" [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()" (input)="onChangeFormComplete()">
     <div class="d-lg-inline-flex">
-             <input class="form-control mr-sm-2" [matAutocomplete]="autoTerm" [formControl]="term">
+             <input class="form-control mr-sm-2" [matAutocomplete]="autoTerm" [formControl]="definition">
       <mat-autocomplete #autoTerm="matAutocomplete">
         <mat-option *ngFor="let option of suitableOptions" [value]="option">
           {{option}}

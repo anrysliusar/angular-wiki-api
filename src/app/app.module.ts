@@ -35,7 +35,6 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     MatFormFieldModule,
