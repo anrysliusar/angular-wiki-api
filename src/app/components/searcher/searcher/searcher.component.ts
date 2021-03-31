@@ -8,6 +8,7 @@ import {WikiService} from '../../../services/wiki.service';
 })
 export class SearcherComponent implements OnInit {
   results = [];
+
   constructor(private wikiService: WikiService) { }
 
   ngOnInit(): void {

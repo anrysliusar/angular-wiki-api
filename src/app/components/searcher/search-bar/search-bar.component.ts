@@ -17,7 +17,7 @@ export class SearchBarComponent implements OnInit {
   });
 
   @Output()
-  definitionEmitter = new EventEmitter();
+  termEmitter = new EventEmitter();
 
   constructor() {
   }
@@ -33,7 +33,7 @@ export class SearchBarComponent implements OnInit {
 
     this.options = this.getDataFromLocalStorage();
     const formTerm = this.contactForm.value.name;
-    this.definitionEmitter.emit(formTerm);
+    this.termEmitter.emit(formTerm);
 
     if (!localStorage.length) {
       localStorage.setItem(`term${localStorage.length}`, formTerm);
