@@ -249,6 +249,7 @@ export class WikiService {
 Зобразимо схематично:
 
 ![NavBar](images/NavBar.png)
+
 Створимо для цього окремі компоненти:
 
 1. Створюємо нову компоненту *About*. Додаємо мінімальну структуру:
@@ -458,4 +459,11 @@ export class WikiService {
 
 Додаткові стилі, які були використані ви можете знайти в [папках до кожної компоненти](https://github.com/anrysliusar/angular-wiki-api/tree/master/src/app/components).
 
+## Скріншоти тестування:
+Сторінка Searcher:
 
+![run-searcher](images/run-searcher.png)
+
+Сторінка About:
+
+![run-about](images/run-about.png)
