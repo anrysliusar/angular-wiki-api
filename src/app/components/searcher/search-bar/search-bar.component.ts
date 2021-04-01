@@ -32,19 +32,22 @@ export class SearchBarComponent implements OnInit {
     }
 
     this.options = this.getDataFromLocalStorage();
-    const formTerm = this.contactForm.value.name;
-    this.definitionEmitter.emit(formTerm);
+    const formDefinition = this.contactForm.value.name;
+    this.definitionEmitter.emit(formDefinition);
 
+
+    // for autocomplete
     if (!localStorage.length) {
-      localStorage.setItem(`term${localStorage.length}`, formTerm);
+      localStorage.setItem(`term${localStorage.length}`, formDefinition);
       return;
     }
 
-    if (!this.options.includes(formTerm)) {
-      localStorage.setItem(`term${localStorage.length}`, formTerm);
+    if (!this.options.includes(formDefinition)) {
+      localStorage.setItem(`term${localStorage.length}`, formDefinition);
     }
   }
 
+  // for autocomplete
   onChangeFormComplete(): void {
     this.suitableOptions = [];
     this.options = this.getDataFromLocalStorage();
@@ -55,6 +58,7 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
+  // for autocomplete
   getDataFromLocalStorage(): string[] {
     const array = [];
     for (let i = 0; i < localStorage.length; i++) {

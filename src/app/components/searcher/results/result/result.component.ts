@@ -9,7 +9,7 @@ import {Result} from '../../../../models/result';
 export class ResultComponent implements OnInit {
   title = 'Result';
   @Input()
-  result: Result;
+  resultOneIn: Result;
 
   constructor() {
   }

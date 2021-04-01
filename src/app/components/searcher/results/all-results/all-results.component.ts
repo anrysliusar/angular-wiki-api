@@ -10,7 +10,7 @@ export class AllResultsComponent implements OnInit {
   title = 'Results';
 
   @Input()
-  results: Result[];
+  resultsIn: Result[];
 
   constructor() {
   }

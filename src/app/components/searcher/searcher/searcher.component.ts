@@ -14,12 +14,11 @@ export class SearcherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getWikiDefinition(definition: string): void {
+  getResultsByDefinition(definition: string): void {
     this.wikiService
       .search(definition)
       .subscribe(value => {
         this.results = value.query.search;
-        console.log(this.results);
       });
   }
 }

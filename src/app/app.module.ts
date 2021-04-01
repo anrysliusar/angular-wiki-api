@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SearchBarComponent} from './components/searcher/search-bar/search-bar.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import {AllResultsComponent} from './components/searcher/results/all-results/all-results.component';
 import {ResultComponent} from './components/searcher/results/result/result.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -25,18 +25,18 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     SearchBarComponent,
     AllResultsComponent,
     ResultComponent,
-    NavbarComponent,
     AboutComponent,
     SearcherComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
   ],

@@ -1,8 +1,8 @@
-<div class="bg-azure_p-5" *ngIf="results">
+<div class="bg-azure_p-5" *ngIf="resultsIn">
   <h1 class="text-center">{{title}}</h1>
   <div class="listItems">
-    <div *ngFor="let result of results">
-      <app-result  *ngIf="results" [result]="result"></app-result>
+    <div *ngFor="let resultOne of resultsIn">
+      <app-result *ngIf="resultsIn" [resultOneIn]="resultOne"></app-result>
     </div>
   </div>
 </div>

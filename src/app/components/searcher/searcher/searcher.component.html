@@ -1,6 +1,5 @@
-<app-search-bar (definitionEmitter)="getWikiDefinition($event)"></app-search-bar>
-<div>
-  <div class="modal-dialog-scrollable" *ngIf="results.length != 0">
-    <app-all-results [results]="results"></app-all-results>
-  </div>
+<app-search-bar (definitionEmitter)="getResultsByDefinition($event)"></app-search-bar>
+
+<div class="modal-dialog-scrollable" *ngIf="results.length != 0">
+  <app-all-results [resultsIn]="results"></app-all-results>
 </div>
