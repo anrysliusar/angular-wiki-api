@@ -225,14 +225,15 @@ export class WikiService {
 }
 ```
 
-## Створення всіх необхідних компонентів
+## Створення всіх необхідних компонентів 
 ### NavBar
 Створюємо нову компоненту *NavBar*.
 
 Тут ми реалізуємо маршрутизацію нашого сайту. Він буде містити 2 сторінки:
 * Searcher
 * About
-
+Зобразимо схематично:
+![NavBar](images/NavBar.png)
 Створимо для цього окремі компоненти:
 1. Створюємо нову компоненту *About*. Додаємо мінімальну структуру:
 
@@ -277,13 +278,168 @@ export class WikiService {
 
 #### Searcher
 Тепер, нарешті переходимо до пошуку та відображення результатів пошуку
-Спочатку візуалізуємо його роботу та створимо неохідні нам компоненти
+Створимо три нові компоненти: *Seach-Bar*, *All-Results*, *Result*
+
+![searcher-hierarchy](images/searcher-hierarchy.png)
+
+Далі зобразимо схематично логіку їх взаємодії:
+
 ![structure-searcher](images/structure-searcher.png)
 
-#### Seach-Bar
+Далі зобразимо макет сторінки, який нам потрібно реалізувати:
+![structure-searcher](images/searcher-page.png)
 
-#### Results
+#### Seach-Bar
+Тут ми отримаємо дані від користувача та передамо їх до батьківської компоненти.
+Щоб отримати дані від користувача використаємо `Angular Reactive Forms`. Для цього нам потрібно імпортувати `ReactiveFormsModule` в наш кореневий модуль.
+
+Далі у коді компоненти використаємо конструктор `FormControl`. Створюючи цей елементи управління в своєму класі компонентів, ви отримуєте негайний доступ для прослуховування, поновлення і перевірки стану введення форми. Потім щоб додати групу форм до цього компонента, виконуємо такі дії: 
+1. Створіть екземпляр `FormGroup`.
+2. Пов’яжіть `FormGroup` модель і `FormControl`.
+
+Потім, додаємо метод, який буде реагувати на відправку форми  
+
+  ```typescript
+  definition = new FormControl();
+
+  contactForm = new FormGroup({
+    name: this.definition
+    
+  contactFormSubmit(): void {
+    if (this.contactForm.value.name === null) {
+      alert('Wrong input!');
+      return;
+    }
+
+    this.options = this.getDataFromLocalStorage();
+    const formDefinition = this.contactForm.value.name;
+  });
+  ```
+
+Далі прописуємо макет форми.
+Атрибути форми 
+1. `formGroup="contactForm"`, для прив'язки об'єкта contactForm до конкретного елементу форми
+2. `ngSubmit="contactFormSubmit"`, відстежує подію, яку можна пов'язати з функцією зворотного виклику (contactFormSubmit)
+
+Атрибути поля для введення
+1. `formControl="definition"` для прив'язки об'єкта definition до конкретного елементу formControl
+
+Отже, маємо:
+```html
+<div class="navbar navbar-light pad">
+  <form class="form-check-inline" [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()">
+    <div class="d-lg-inline-flex">
+      <input class="form-control mr-sm-2" [formControl]="definition">
+    </div>
+    <button class="btn btn-success pad">Search</button>
+  </form>
+</div>
+```
+Дані від користувача отримали!
+
+Тепер потрібно відправити на батьківський компонент (*Searcher*)
+
+Для цього створимо властивість definitionEmitter і використаємо декоратор  `@Output()`
+  ```typescript
+  @Output()
+  definitionEmitter = new EventEmitter();
+  ```
+  * `@Output()` — функція-декоратор, що позначає властивість як спосіб переходу даних від дитини до батьків
+  * `EventEmitter()` - повідомляє Angular про створення нового (випромінювача) подій 
+
+Далі додамо у функцію contactFormSubmit, this.definitionEmitter.emit(formDefinition), щоб при відправці форми `EventEmitter` наповнив `definitionEmitter` значенням, яке прийшло з форми.
+
+Налаштуємо батьківську компоненту (*Searcher*):
+У коді компоненти створимо метод, який буде приймати дані з дочірньої компоненти:
+```typescript
+  getResultsByDefinition(definition: string): void {}
+```
+Встановимо селектор дитини, в шаблоні батьківського компонента
+```typescript
+<app-search-bar (definitionEmitter)="getResultsByDefinition($event)"></app-search-bar>
+```
+
+Подія зв'язування `(definitionEmitter)='getResultsByDefinition($event)'`, пов'язує подію в дитині, definitionEmitter до методу в батьківському, `getResultsByDefinition()`. `$event` містить дані , які користувач вводить в `<input>` в дочірній шаблон для користувача інтерфейсу.
+
+Дані з дочірньої в батьківську компоненту передано!
+
+#### Searcher
+Тут ми повинні використати уже створений нами сервіс пошуку по Вікіпедії (`wiki.service`)  для отримання результатів пошуку. Самі ж результати пошуку передамо далі (в компоненту *All-Results*)
+
+Щоб це реалізувати впроваджуємо цей сервіс в нашу компоненту:
+```typescript
+  constructor(private wikiService: WikiService) { }
+```
+Створимо нову властивість (поле) `results = []` - пустий масив, у який ми будемо записувати результати пошуку.
+Далі в уже створеному методі, який приймає дані з дочірньої компоненти, викликаємо метод `search` сервісу `wiki.service` та передаємо у нього дані:
+
+```typescript
+    getResultsByDefinition(definition: string): void {
+    this.wikiService
+      .search(definition)
+      .subscribe(value => {
+        this.results = value.query.search;
+      });
+  }
+```
+* `.subscribe(value => {this.results = value.query.search;});` - як видавець ви створюєте екземпляр Observable, який починає видавати значення тільки тоді , коли хтось підписується на нього. Ви підписуєтесь, викликаючи subscribe() метод екземпляра, передаючи об'єкт спостерігача для отримання сповіщень. У нашому випадку властивість `results` почне спостерігати за зміною стану `value.query.search`, і при кожній його зміні буде змінюватись теж.
+
+Наступним етапом буде передача отриманих результатів в компоненту *All-Results*
+
+Встановимо селектор дочірньої компоненти *All-Results*
+```html
+<div class="modal-dialog-scrollable" *ngIf="results.length != 0">
+  <app-all-results [resultsIn]="results"></app-all-results>
+</div>
+```
+* [resultsIn]="results" - поля зв'язування: results - батьківське поле, resultsIn - дочірнє.
+
 ##### All-Results
+Щоб прийняти дані з батьківської компоненти, ми повинні визначити властивість (поле) `resultsIn` (параметризувавши її `Result[]` - масив об'єктів типу `Result`) та поставимо над нею `@Input()` - декоратор, який позначає поле класу як властивість введення та надає метадані конфігурації. Властивість input прив’язана до властивості DOM у шаблоні. Під час виявлення змін Angular автоматично оновлює властивість даних зі значенням властивості DOM.
+
+```typescript
+  title = "Results";
+  
+  @Input()
+  resultsIn: Result[];
+  ```
+Дані з батьківської в дочірню компоненту передано!  
+  
+Наступним етапом ми повинні відобразити всі результати.
+Для цього в шаблоні цієї компоненти використаємо вбудований цикл `*ngFor` та передамо по одному результату для відображення в компоненту `Result`.
+
+```html
+<div class="bg-azure_p-5" *ngIf="resultsIn">
+  <h1 class="text-center">{{title}}</h1>
+  <div class="listItems">
+    <div *ngFor="let resultOne of resultsIn">
+      <app-result *ngIf="resultsIn" [resultOneIn]="resultOne"></app-result>
+    </div>
+  </div>
+</div>
+```
+
 ##### Result
+По аналогії приймаємо дані з батьківської компоненти:
+```typescript
+  @Input()
+  resultOneIn: Result;
+```
+Та залишається тільки відобразити їх:
+
+```html
+<div class="card" style="width: 26rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{resultOneIn?.title}}</h5>
+    <p class="card-text" [innerHtml]="resultOneIn?.snippet"></p>
+    <a class="btn btn-dark" target="_blank" [href]="'http://en.wikipedia.org/?curid=' + resultOneIn?.pageid">Show info</a>
+  </div>
+</div>
+```
+
+### Стилі
+Більшість стилів було використано із фреймворку Bootstrap.
+
+Додаткові стилі ви можете знайти в папках до кожної компоненти.
 
 
