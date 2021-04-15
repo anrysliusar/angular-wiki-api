@@ -469,7 +469,7 @@ export class WikiService {
 ![run-about](./images/run-about.png)
 
 
-<hr style="border:2px solid blue"> </hr>
+<hr style="border:2px"> </hr>
 
 Готовий проект ви можете знайти за  в  GitHub: [посилання на репозиторій](https://github.com/anrysliusar/angular-wiki-api/) 
 
