@@ -471,8 +471,8 @@ export class WikiService {
 
 <hr style="border:2px"> </hr>
 
-Готовий проект ви можете знайти за  в  GitHub: [посилання на репозиторій](https://github.com/anrysliusar/angular-wiki-api/) 
+Готовий проект ви можете знайти в GitHub: [посилання на репозиторій](https://github.com/anrysliusar/angular-wiki-api/) 
 
-Андрій Слюсаренко  |  студент НТУУ "КПІ", ФІОТ  |  assliusarenko@gmail.com
+Андрій Слюсаренко | студент НТУУ "КПІ", ФІОТ | assliusarenko@gmail.com
 
 квітень 2021
