@@ -467,3 +467,12 @@ export class WikiService {
 Сторінка About:
 
 ![run-about](./images/run-about.png)
+
+
+<hr style="border:2px solid blue"> </hr>
+
+Готовий проект ви можете знайти за  в  GitHub: [посилання на репозиторій](https://github.com/anrysliusar/angular-wiki-api/) 
+
+Андрій Слюсаренко  |  студент НТУУ "КПІ", ФІОТ  |  assliusarenko@gmail.com
+
+квітень 2021
